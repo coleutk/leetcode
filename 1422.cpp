@@ -7,7 +7,7 @@ public:
         // Create a postfix sum (starting from the back) to know how
         // many 1s come after a certain index in s. This way, as you
         // iterate forward through s, you can keep track of 0s and 
-        // calculate a sum of 0s and 1s at any point
+        // calculate a sum of 0s and 1s at any point in time
         int oneCnt = 0;
         for(int i = n - 1; i >= 0; i--) {
             if(s[i] == '1') {

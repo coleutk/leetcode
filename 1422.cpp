@@ -11,10 +11,10 @@ public:
         int oneCnt = 0;
         for(int i = n - 1; i >= 0; i--) {
             if(s[i] == '1') {
-                onesCnt++; 
+                oneCnt++; 
             } 
             
-            postfixSum[i] = onesCnt; 
+            postfixSum[i] = oneCnt; 
         } 
 
         int zeroCnt = 0;

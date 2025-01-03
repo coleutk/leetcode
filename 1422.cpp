@@ -2,9 +2,9 @@ class Solution {
 public:
     int maxScore(string s) {
         int n = s.size();
-        vector<int> postfixSum(n, 0); 
+        vector<int> sufffixSum(n, 0); 
 
-        // Create a postfix sum (starting from the back) to know how
+        // Create a suffix sum (starting from the back) to know how
         // many 1s come after a certain index in s. This way, as you
         // iterate forward through s, you can keep track of 0s and 
         // calculate a sum of 0s and 1s at any point in time
@@ -14,7 +14,7 @@ public:
                 oneCnt++; 
             } 
             
-            postfixSum[i] = oneCnt; 
+            suffixSum[i] = oneCnt; 
         } 
 
         int zeroCnt = 0;
@@ -24,7 +24,7 @@ public:
                 zeroCnt++;
             } 
         
-            mx = max(mx, zeroCnt + postfixSum[i + 1]);
+            mx = max(mx, zeroCnt + suffixSum[i + 1]);
         }
         
         return mx;

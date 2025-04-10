@@ -1,3 +1,4 @@
+// Old Solution
 class Solution {
 public:
     long long maximumTripletValue(vector<int>& nums) {
@@ -26,6 +27,30 @@ public:
         for(int i = 1; i < n - 1; i++) {
             long long curr = (long long)(maxSeenLeft[i - 1] - nums[i]) * maxSeenRight[i + 1];
             res = max(res, curr);
+        }
+
+        return res;
+    }
+};
+
+// New Solution:
+class Solution {
+public:
+    long long maximumTripletValue(vector<int>& nums) {
+        long long prefix_max = nums[0];
+        long long max_diff = 0;
+        long long res = 0;
+        for(int k = 1; k < nums.size(); k++) {
+            long long curr = nums[k];
+
+            // We can keep updating prefix_max to find a larger max_diff, but we won't actually
+            // update max_diff until we find a better complement to our new prefix_max. Thus, as
+            // we search through the array, we are using our best max diff so far (calculated using
+            // the previous largest prefix max) to continue making calculations until we find
+            // this new larger prefix max's complement
+            res = max(res, max_diff * curr);
+            prefix_max = max(prefix_max, curr);
+            max_diff = max(max_diff, prefix_max - curr);
         }
 
         return res;
